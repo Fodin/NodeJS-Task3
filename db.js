@@ -1,7 +1,8 @@
 const Sequelize = require('sequelize');
                                 //database username   password
-const sequelize = new Sequelize('gamedb', 'postgres', '111111', {
+const sequelize = new Sequelize('gamedb', 'fodin', '111111', {
     host: 'localhost',
+    port: 5433,
     dialect: 'postgres'
 })
 

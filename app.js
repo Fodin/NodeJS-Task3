@@ -5,11 +5,16 @@ var user = require('./controllers/usercontroller');
 var game = require('./controllers/gamecontroller')
 
 
-db.sync();
+db.sync().then(() => {
+    console.log('db.sync well done');
+}).catch((e) => {
+    console.log('ERROR:', e);
+    process.exit(1);
+});
 app.use(require('body-parser').json());
 app.use('/api/auth', user);
 app.use(require('./middleware/validate-session'))
 app.use('/api/game', game);
-app.listen(function() {
+app.listen(4000,function() {
     console.log("App is listening on 4000");
 })
